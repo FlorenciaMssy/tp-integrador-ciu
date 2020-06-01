@@ -1,0 +1,99 @@
+
+@media screen and (max-width: 800px){
+    
+    }
+
+
+body {
+    background-image: url("imagenes/fondoLogin1.png") ;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+   /* font-family: "Verdana"; */
+}
+
+.login {
+    position: relative;
+    width: 400px;
+    height: 250px;
+    left: 195px;
+    top: 130px;
+
+    background: #D0E5ED;
+    border-radius: 47px;
+
+}
+/* Login */
+#textoLogin {
+    position: relative;
+    left: 160px;
+    top: 7px;
+
+    font-family: PT Serif Caption;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    display: flex;
+    align-items: flex-end;
+    text-align: center;
+
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.ingresarDatos {
+    position: relative;
+    width: 250px;
+    height: 45px;
+    left: 70px;
+    top: 20px;
+
+    background: #8DC0D4;
+    border-radius: 20px;
+
+}
+.acompañamiento {
+    position: absolute;
+   /* width: 819px;
+    height: 90px;*/
+    left: 160px;
+    top: 250px;
+    
+    font-family: PT Serif Caption;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 69px;
+    text-align: center;
+    text-decoration-line: none;
+    
+    color: #303030;
+
+}
+#imagenLogo {
+    position: relative;
+    left: 280px;
+    top: 20px;
+
+}
+
+#botonIngresar {
+    position: relative;
+    width: 120px;
+    height: 40px;
+    left: 140px;
+    top: 40px;
+
+    background: rgba(121, 175, 61, 0.67);
+    mix-blend-mode: normal;
+    border: 1px solid #495154;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+#error {
+
+    position: relative;
+    color: red;
+    font-size: 12px;
+    display: none;
+}
