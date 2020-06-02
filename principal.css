@@ -1,30 +1,16 @@
 body {
-    background-image: url("imagenes/fondoppal.png") ;
+    background-image: url("imagenes/fondoppal.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
     background-size: 100% 100%;
-   /* font-family: "Verdana"; */
-}
-#cerrarSesion {
-    margin: auto;
-    position: relative;
-    width: 162px;
-    height: 42px;
-    margin-top: 15%;
-    margin-left: 85%;
-    background: white;
-    border: 1px solid #586658;
-    box-sizing: border-box;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 40px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /* font-family: "Verdana"; */
 }
 
 h2 {
     margin: auto;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin-left: 1%;
     font-size: 40px;
 }
@@ -33,25 +19,73 @@ h2 {
     text-align: left;
     margin-top: 2%;
 }
+
 table {
     border-collapse: collapse;
     width: 60%;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background:rgba(120, 174, 65, 0.5);
+    background: rgba(120, 174, 65, 0.5);
     text-align: center;
-    font-size: 20   px;
+    font-size: 20 px;
     padding: 10px 20px;
     margin: 10px 10px 10px 10px;
     /* display: inline; */
-    
-  }
-  
-  th, td {
+
+}
+
+th,td {
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid black;
-  }
+}
 
+/* /// button  */
 
+.dropbtn {
+    background-color: black;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-left: 1180%;
+}
 
+.dropbtn:hover,
+.dropbtn:focus {
+    background-color: black;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    margin-left: 1180%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    position: absolute;
+    background-color: black;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {
+    background-color: #586658;
+}
+
+.show {
+    display: block;
+}

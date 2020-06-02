@@ -1,25 +1,18 @@
-var boton = document.getElementById("cerrarSesion");
-
-boton.addEventListener('click', function (event) {
-
-    location.href = "login.html"
-})
-
 document.addEventListener('DOMContentLoaded', function (event) {
     var solicitudes = [{
-            "Fecha Solicitud": "30/03/2020",
+            "Fecha_Solicitud": "30/03/2020",
             "Descripción": "Pedido de notebook",
             "Estado": "Abierta",
             "Seleccionar": " "
         },
         {
-            "Fecha Solicitud": "03/04/2020",
+            "Fecha_Solicitud": "03/04/2020",
             "Descripción": "Cambio de horario",
             "Estado": "En progreso",
             "Seleccionar": " "
         },
         {
-            "Fecha Solicitud": "12/05/2020",
+            "Fecha_Solicitud": "12/05/2020",
             "Descripción": "Pedido de una bicicleta para llegar a la universidad",
             "Estado": "Cerrada",
             "Seleccionar": " ",
@@ -46,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         tr.appendChild(th);
     }
 
-    //add jason data to the table as row
+    //add json data to the table as row
 
     for (var i = 0; i < solicitudes.length; i++) {
         tr = table.insertRow(-1);
@@ -61,16 +54,46 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 tabCell.appendChild(checkbox);
             }
         }
+    }
+});
 
-        function check() {
-            document.getElementById(checkbox).checked = true;
-            
+document.getElementById("button").addEventListener('click', saveSolicitud);
 
+function saveSolicitud() {
+    var pfechaSolicitud = document.getElementById("fecha").value;
+    var pdescripcion = document.getElementById("descrpcion").value;
+    var pestado = document.getElementById("estado").value;
+
+    nuevaSolicitud(pfechaSolicitud, pdescripcion, pestado);
+}
+
+function nuevaSolicitud(pfechaSolicitud, pdescripcion, pestado) {
+
+    var nuevosDatos = {
+        Fecha_Solicitud: pfechaSolicitud,
+        Descripcion: pdescripcion,
+        Estado: pestado
+    };
+    solicitudes.push(nuevosDatos);
+
+}
+
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function (event) {
+    if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
         }
     }
-
-    function uncheck() {
-        document.getElementById(checkbox).checked = false;
-    }
-
-});
+}

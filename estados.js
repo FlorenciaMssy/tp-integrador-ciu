@@ -1,1 +1,0 @@
-const estados = Object.freeze({"Abierta":1, "En progreso":2, "Cerrada":3})
