@@ -1,31 +1,28 @@
-var boton = document.getElementById("cerrarSesion")
+var boton = document.getElementById("cerrarSesion");
+
 boton.addEventListener('click', function(event){
 
     location.href="login.html"
 })
 
-
-
-function agregarSolicitudJSON(){
- 
-        var solicitudes = [
-            {
-                "Fecha Solicitud": "30/03/2020",
-                "Descripción": "Pedido de notebook",
-                "Estado": "Abierta"
-            },
-            {
-                "Fecha Solicitud": "03/04/2020",
-                "Descripción": "Cambio de horario",
-                "Estado": "En progreso"
-            },
-            {
-                "Fecha Solicitud": "12/05/2020",
-                "Descripción": "Pedido de una bicicleta para llegar a la universidad",
-                "Estado": "Cerrada"
-            }
-        ]
-
+document.addEventListener('DOMContentLoaded', function(event) {
+    var solicitudes = [
+        {
+            "Fecha Solicitud": "30/03/2020",
+            "Descripción": "Pedido de notebook",
+            "Estado": "Abierta"
+        },
+        {
+            "Fecha Solicitud": "03/04/2020",
+            "Descripción": "Cambio de horario",
+            "Estado": "En progreso"
+        },
+        {
+            "Fecha Solicitud": "12/05/2020",
+            "Descripción": "Pedido de una bicicleta para llegar a la universidad",
+            "Estado": "Cerrada"
+        }
+    ]
 
     var col = [];
 
@@ -37,32 +34,23 @@ function agregarSolicitudJSON(){
         }
     }
 
+    var table = document.getElementById("mostrarDato");
 
-var table = document.createElement("table");
+    var tr = table.insertRow(-1); //table row
 
-var tr = table.insertRow(-1); //table row
-
-for(var i=0; i < col.length; i++){  //table header
-    var th = document.createElement("th");
-debugger;
-
-    th.innerHtml = col[i];
-    tr.appendChild(th);
-}
-
-
-//add jason data to the table as row
-
-for(var i=0; i < solicitudes.length; i++){
-    tr = table.insertRow(-1);
-    for(var j = 0; j < col.length; j++){
-        var tabCell = tr.insertCell(-1);
-        tabCell.innerHtml = solicitudes [i][col[j]];
+    for(var i=0; i < col.length; i++){  //table header
+        var th = document.createElement("th");
+        th.innerText = col[i];
+        tr.appendChild(th);
     }
 
-}
-//finally add the new created table with json data to a container
-var divContainer = document.getElementById("mostrarDato");
-divContainer.innerHtml = "";
-divContainer.appendChild(table);
-}
+    //add jason data to the table as row
+
+    for(var i=0; i < solicitudes.length; i++){
+        tr = table.insertRow(-1);
+        for(var j = 0; j < col.length; j++){
+            var tabCell = tr.insertCell(-1);
+            tabCell.innerText = solicitudes[i][col[j]];
+        }
+    }
+});
