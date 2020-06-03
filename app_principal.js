@@ -1,7 +1,8 @@
+var checkboxSeleccionado = document.getElementsByClassName("checkb");
 
-if ( JSON.parse(localStorage.getItem('solicitudes')) === null )`` {
+var eliminar = document.getElementById("eliminar");
 
-    var solicitudes = [{
+var solicitudes = [{
         "Fecha_Solicitud": "30/03/2020",
         "Descripción": "Pedido de notebook",
         "Estado": "Abierta",
@@ -20,10 +21,9 @@ if ( JSON.parse(localStorage.getItem('solicitudes')) === null )`` {
         "Seleccionar": " ",
     }
 ]
-}
 
-localStorage.setItem('solicitudes', JSON.stringify(solicitudes));
 
+//localStorage.setItem('solicitudes', JSON.stringify(solicitudes));
 
 document.addEventListener('DOMContentLoaded', function (event) {
     // Retrieve the object from storage
@@ -59,12 +59,28 @@ document.addEventListener('DOMContentLoaded', function (event) {
             if (j == 3) {
 
                 var checkbox = document.createElement("input"); //Added for checkbox
-                checkbox.type = "checkbox"; //Added for checkbox
+                checkbox.type = "radio"; //Added for checkbox
+                checkbox.className = "checkb"
+                checkbox.name = "buttonCh";
+                checkbox.value = sol.length + 1;
                 tabCell.appendChild(checkbox);
             }
         }
     }
 });
+
+
+
+
+function estaSeleccionado() {
+    var seleccion;
+    for (var i = 0; i < checkboxSeleccionado.length; i++) {
+        if (checkboxSeleccionado[i].checked) {
+            seleccion = checkboxSeleccionado[i].value
+        }
+    }
+    return seleccion
+}
 
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
@@ -85,3 +101,14 @@ window.onclick = function (event) {
         }
     }
 }
+
+eliminar.addEventListener('click', () => {
+    if ( estaSeleccionado() ){
+
+    }
+
+    else {
+        document.getElementById("error").style.display = "block"
+        error.innerHTML = "Debe seleccionar una solicitud para eliminar."
+    }
+})

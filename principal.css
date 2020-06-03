@@ -89,3 +89,14 @@ th,td {
 .show {
     display: block;
 }
+
+#error {
+
+    position: relative;
+    color: red;
+    font-size: 20px;
+    display: none;
+    margin-left: 15%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
