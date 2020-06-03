@@ -22,13 +22,16 @@ var solicitudes = [{
     }
 ]
 
+var sol = JSON.parse(localStorage.getItem('solicitudes'));
 
 //localStorage.setItem('solicitudes', JSON.stringify(solicitudes));
 
-document.addEventListener('DOMContentLoaded', function (event) {
-    // Retrieve the object from storage
-    var sol = JSON.parse(localStorage.getItem('solicitudes'));
+document.addEventListener('DOMContentLoaded', crearTabla()); 
 
+
+function crearTabla(){
+    //var sol = JSON.parse(localStorage.getItem('solicitudes'));
+    
     var col = [];
 
     for (var i = 0; i < sol.length; i++) {
@@ -62,13 +65,13 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 checkbox.type = "radio"; //Added for checkbox
                 checkbox.className = "checkb"
                 checkbox.name = "buttonCh";
+                checkbox.id = [i],                
                 checkbox.value = sol.length + 1;
                 tabCell.appendChild(checkbox);
             }
         }
     }
-});
-
+}
 
 
 
@@ -80,6 +83,16 @@ function estaSeleccionado() {
         }
     }
     return seleccion
+}
+
+function solicitudSeleccionada(){
+    var posicion;
+    for (var i = 0; i < checkboxSeleccionado.length; i++) {
+        if (checkboxSeleccionado[i].checked) {
+            posicion = i
+        }
+    }
+    return posicion
 }
 
 /* When the user clicks on the button, 
@@ -104,10 +117,9 @@ window.onclick = function (event) {
 
 eliminar.addEventListener('click', () => {
     if ( estaSeleccionado() ){
-
-    }
-
-    else {
+        sol[solicitudSeleccionada()].remove;
+        crearTabla();
+    }else {
         document.getElementById("error").style.display = "block"
         error.innerHTML = "Debe seleccionar una solicitud para eliminar."
     }
