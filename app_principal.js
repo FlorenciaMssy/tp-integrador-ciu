@@ -1,28 +1,38 @@
-document.addEventListener('DOMContentLoaded', function (event) {
+
+if ( JSON.parse(localStorage.getItem('solicitudes')) === null )`` {
+
     var solicitudes = [{
-            "Fecha_Solicitud": "30/03/2020",
-            "Descripción": "Pedido de notebook",
-            "Estado": "Abierta",
-            "Seleccionar": " "
-        },
-        {
-            "Fecha_Solicitud": "03/04/2020",
-            "Descripción": "Cambio de horario",
-            "Estado": "En progreso",
-            "Seleccionar": " "
-        },
-        {
-            "Fecha_Solicitud": "12/05/2020",
-            "Descripción": "Pedido de una bicicleta para llegar a la universidad",
-            "Estado": "Cerrada",
-            "Seleccionar": " ",
-        }
-    ]
+        "Fecha_Solicitud": "30/03/2020",
+        "Descripción": "Pedido de notebook",
+        "Estado": "Abierta",
+        "Seleccionar": " "
+    },
+    {
+        "Fecha_Solicitud": "03/04/2020",
+        "Descripción": "Cambio de horario",
+        "Estado": "En progreso",
+        "Seleccionar": " "
+    },
+    {
+        "Fecha_Solicitud": "12/05/2020",
+        "Descripción": "Pedido de una bicicleta para llegar a la universidad",
+        "Estado": "Cerrada",
+        "Seleccionar": " ",
+    }
+]
+}
+
+localStorage.setItem('solicitudes', JSON.stringify(solicitudes));
+
+
+document.addEventListener('DOMContentLoaded', function (event) {
+    // Retrieve the object from storage
+    var sol = JSON.parse(localStorage.getItem('solicitudes'));
 
     var col = [];
 
-    for (var i = 0; i < solicitudes.length; i++) {
-        for (var key in solicitudes[i]) {
+    for (var i = 0; i < sol.length; i++) {
+        for (var key in sol[i]) {
             if (col.indexOf(key) === -1) {
                 col.push(key);
             }
@@ -40,12 +50,11 @@ document.addEventListener('DOMContentLoaded', function (event) {
     }
 
     //add json data to the table as row
-
-    for (var i = 0; i < solicitudes.length; i++) {
+    for (var i = 0; i < sol.length; i++) {
         tr = table.insertRow(-1);
         for (var j = 0; j < col.length; j++) {
             var tabCell = tr.insertCell(-1);
-            tabCell.innerText = solicitudes[i][col[j]];
+            tabCell.innerText = sol[i][col[j]];
 
             if (j == 3) {
 
@@ -56,27 +65,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
         }
     }
 });
-
-document.getElementById("button").addEventListener('click', saveSolicitud);
-
-function saveSolicitud() {
-    var pfechaSolicitud = document.getElementById("fecha").value;
-    var pdescripcion = document.getElementById("descrpcion").value;
-    var pestado = document.getElementById("estado").value;
-
-    nuevaSolicitud(pfechaSolicitud, pdescripcion, pestado);
-}
-
-function nuevaSolicitud(pfechaSolicitud, pdescripcion, pestado) {
-
-    var nuevosDatos = {
-        Fecha_Solicitud: pfechaSolicitud,
-        Descripcion: pdescripcion,
-        Estado: pestado
-    };
-    solicitudes.push(nuevosDatos);
-
-}
 
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */

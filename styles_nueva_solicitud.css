@@ -1,5 +1,20 @@
+@media screen and (max-width: 800px){   
+}
+
+body {
+background-image: url("imagenes/fondoLogin1.png") ;
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: 100% 100%;
+font-family: "Verdana";
+}
+
 custom-file-input {
     display: inline-block;
     overflow: hidden;
     position: relative;
+}
+
+#button {
+    color: black;
 }
