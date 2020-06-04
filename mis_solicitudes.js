@@ -1,14 +1,7 @@
-
-
-document.querySelector("#button").addEventListener('click', function (event) {
-    //var pfechaSolicitud = document.getElementById("fecha").value;
-    var pdescripcion = document.getElementById("descripcion").value;
-    //var pestado = document.getElementById("estado").value;
-
-    nuevaSolicitud(pdescripcion);
-
-})
-
+var esNuevo
+var descripcionInput
+var solicitudSeleccionada 
+var solicitudes 
 
 
 function nuevaSolicitud(pdescripcion) {
@@ -32,8 +25,32 @@ function nuevaSolicitud(pdescripcion) {
 
 var botonGuardar = document.getElementById("button")
 botonGuardar.addEventListener('click', () => {
+    if(!esNuevo){
+        editarSolicitud(descripcionInput.value)
+    } else {
+        nuevaSolicitud(descripcionInput.value)
+    }
+
     location.href = "principal.html"
 })
+function editarSolicitud(descripcion) {
+    solicitudes[solicitudSeleccionada].Descripción = descripcion
+    localStorage.setItem('solicitudes', JSON.stringify(solicitudes))
+}
 
-console.log(solicitudes);
-console.log(solicitudes.length);
+
+document.addEventListener('DOMContentLoaded', init());
+
+function init(){
+    solicitudes = JSON.parse(localStorage.getItem('solicitudes'))
+    solicitudSeleccionada = JSON.parse(localStorage.getItem("modificarElemento"))
+    esNuevo = JSON.parse(localStorage.getItem('esNuevo'))
+    descripcionInput = document.getElementById('descripcion')
+    console.log(typeof esNuevo)
+    if(!esNuevo) {
+        console.log(esNuevo)
+        descripcionInput.value = solicitudes[solicitudSeleccionada].Descripción
+    } else {
+        console.log("entro")
+    }
+}

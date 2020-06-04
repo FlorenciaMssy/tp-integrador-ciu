@@ -21,17 +21,17 @@
 
         <button onclick="myFunction()" class="dropbtn">Menu</button>
         <div id="myDropdown" class="dropdown-content">
-            <a href="nueva_solicitud.html">Nueva Solicitud</a>
-            <a href="#about">Modificar</a>
-            <a href="#contact" id="eliminar">Eliminar</a>
-            <a href="login.html"> Cerrar sesión</a>
+            <button id="nuevo-btn">Nueva Solicitud</button>
+            <button id="modificar-btn">Modificar</button>
+            <button id="eliminar-btn">Eliminar</button>
+            <a href="/login.html"> Cerrar sesión</a>
         </div>
     </div>
 
-    <div>
-        
+    <div class ="container">
         <h2>Mis solicitudes</h2>
-        <table id="mostrarDato"></table>
+        <table class="table table-hover" id="mostrarDato">
+        </table>
         <div id="error"></div>
     </div>
 
