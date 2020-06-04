@@ -2,6 +2,7 @@ var esNuevo
 var descripcionInput
 var solicitudSeleccionada 
 var solicitudes 
+var cancelarBtn = document.getElementById('boton-cancelar')
 
 
 function nuevaSolicitud(pdescripcion) {
@@ -38,7 +39,6 @@ function editarSolicitud(descripcion) {
     localStorage.setItem('solicitudes', JSON.stringify(solicitudes))
 }
 
-
 document.addEventListener('DOMContentLoaded', init());
 
 function init(){
@@ -54,3 +54,7 @@ function init(){
         console.log("entro")
     }
 }
+
+cancelarBtn.addEventListener('click', () => {
+    location.href = "principal.html"
+})

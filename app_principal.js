@@ -1,7 +1,8 @@
 var checkboxSeleccionado = document.getElementsByClassName("checkb");
 var eliminarBtn = document.getElementById("eliminar-btn");
-var modificarBtn = document.getElementById("modificar-btn")
-var nuevoBtn = document.getElementById("nuevo-btn")
+var modificarBtn = document.getElementById("modificar-btn");
+var nuevoBtn = document.getElementById("nuevo-btn");
+var cerrarSession = document.getElementById("cerrar-sesion");
 
 var solicitudes = [{
     "Fecha_Solicitud": "30/03/2020",
@@ -104,6 +105,7 @@ function solicitudSeleccionada() {
 
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
+
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -133,14 +135,14 @@ function estaSeleccionado() {
 
 nuevoBtn.addEventListener('click', ()=>{
     localStorage.setItem('esNuevo', true)
-    document.location.href = "/nueva_solicitud.html"
+    document.location.href = "nueva_solicitud.html"
 })
 
 modificarBtn.addEventListener('click', () =>{
     if (estaSeleccionado()) {
         localStorage.setItem('modificarElemento', JSON.stringify(estaSeleccionado()));
         localStorage.setItem('esNuevo', false)
-        document.location.href = "/nueva_solicitud.html"
+        document.location.href = "nueva_solicitud.html"
     } else {
         document.getElementById("error").style.display = "block"
         error.innerHTML = "Debe seleccionar una solicitud para modificar."
@@ -158,4 +160,8 @@ eliminarBtn.addEventListener('click', () => {
         document.getElementById("error").style.display = "block"
         error.innerHTML = "Debe seleccionar una solicitud para eliminar."
     }
+})
+
+cerrarSession.addEventListener('click', () => {
+    document.location.href = "login.html"
 })
