@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABM Users</title>
+    <link rel="stylesheet" href="styles_abm.css">
+</head>
+
+<body>
+
+    <div class="topnav" id="myTopnav">
+        <a href="#home" class="active">Creacion / Modificacion de Usuario</a>
+        <a href="#news">Mis Solicitudes</a>
+        <a href="#contact">Usuarios</a>
+        <a href="#about">Salir</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+    </div>
+
+    <br>
+    
+    <div class="centrar">
+        <img src="imagenes/logo_unahur.png" height="60">
+    </div>
+    <br>
+    <h2>Creacion/Modificacion de usuario</h2>
+
+    <br>
+    <span class="dropdown">
+
+        <button onclick="myFunction()" class="dropbtn">Menu</button>
+        <div id="myDropdown" class="dropdown-content">
+            <button id="nuevo-btn">Mis Solicitudes</button>
+            <br>
+            <button id="modificar-btn">Usuarios</button>
+            <br>
+            <button id="cerrar-sesion">Salir</button>
+        </div>
+    </span>
+
+    
+
+    <script src="app_abm_user.js"></script>
+</body>
+
+</html>

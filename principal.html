@@ -17,7 +17,7 @@
     <br>
     <br>
     <br>
-    <div class="dropdown">
+    <!-- <span class="dropdown">
 
         <button onclick="myFunction()" class="dropbtn">Menu</button>
         <div id="myDropdown" class="dropdown-content">
@@ -29,12 +29,26 @@
             <br>
             <button id="cerrar-sesion">Cerrar sesión</button>
         </div>
-    </div>
+    </span> -->
 
+    <h2>Mis solicitudes</h2>
     <div class ="container">
-        <h2>Mis solicitudes</h2>
         <table class="table table-hover" id="mostrarDato">
         </table>
+            <span class="dropdown">
+
+                <button onclick="myFunction()" class="dropbtn">Menu</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <button id="nuevo-btn">Nueva Solicitud</button>
+                    <br>
+                    <button id="modificar-btn">Modificar</button>
+                    <br>
+                    <button id="eliminar-btn">Eliminar</button>
+                    <br>
+                    <button id="cerrar-sesion">Cerrar sesión</button>
+                </div>
+            </span>
+        
         <div id="error"></div>
     </div>
 
