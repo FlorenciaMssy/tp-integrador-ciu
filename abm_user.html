@@ -5,45 +5,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión usuarios</title>
+    <title>Gestión de usuarios</title>
     <link rel="stylesheet" href="styles_abm.css">
 </head>
 
 <body>
 
     <div class="topnav" id="myTopnav">
-        <a href="#home" class="active">Creacion / Modificacion de Usuario</a>
+            <img src="imagenes/logo_unahur.png" height="45">
+        <a href="index.html" class="active">Salir</a>
         <a href="principal.html">Mis Solicitudes</a>
         <a href="usuarios.html">Usuarios</a>
-        <a href="index.html">Salir</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <!--<a href="javascript:void(0);" class="icon" onclick="myFunction()">
           <i class="fa fa-bars"></i>
-        </a>
+        </a>--->
     </div>
-
-    <br>
-    
-    <div class="centrar">
-        <img src="imagenes/logo_unahur.png" height="60">
-    </div>
-    <br>
     <h2>Creacion/Modificacion de usuario</h2>
-
+    <div>
+        <br>
+        <input type="date" placeholder="Fecha de nacimiento">
+        <br>
+        <input type="url" placeholder="Avatar">
+        <br>
+        <input type="text" placeholder="Nombre">
+        <br>
+        <input type="password" placeholder="Contraseña">
+        <br>
+        <input type="text" placeholder="Estado">
+    </div>
     <br>
-    <span class="dropdown">
-
-        <button onclick="myFunction()" class="dropbtn">Menu</button>
-        <div id="myDropdown" class="dropdown-content">
-            <button id="nuevo-btn">Mis Solicitudes</button>
-            <br>
-            <button id="modificar-btn">Usuarios</button>
-            <br>
-            <button id="cerrar-sesion">Salir</button>
-        </div>
-    </span>
-
-    
-
     <script src="app_abm_user.js"></script>
 </body>
 

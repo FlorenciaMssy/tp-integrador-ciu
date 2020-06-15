@@ -103,3 +103,17 @@ img {
     display: none;
     margin-left: 21%;
 }
+
+a{
+    margin-right: 200%;
+    text-decoration: none;
+    margin: 10px 10px 10px 10px;
+    background: #0ebbdac4;
+    padding: 10px 20px;
+    display: inline;
+}
+
+a:hover {
+    text-decoration: underline;
+
+}
