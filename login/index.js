@@ -9,7 +9,7 @@ boton.addEventListener('click', function (event) {
     
         if(validacionUsuario(usuario) && validacionContraseña(contraseña)){
             
-            location.href="pagina_principal.html"
+            location.href="../principal/pagina_principal.html"
             
             /*window.location.href = 'principal.html';*/
         }

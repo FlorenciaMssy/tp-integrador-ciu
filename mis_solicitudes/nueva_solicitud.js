@@ -32,7 +32,7 @@ botonGuardar.addEventListener('click', () => {
         nuevaSolicitud(descripcionInput.value)
     }
 
-    location.href = "principal.html"
+    location.href = "mis_solicitudes.html"
 })
 function editarSolicitud(descripcion) {
     solicitudes[solicitudSeleccionada].Descripción = descripcion
@@ -46,7 +46,6 @@ function init(){
     solicitudSeleccionada = JSON.parse(localStorage.getItem("modificarElemento"))
     esNuevo = JSON.parse(localStorage.getItem('esNuevo'))
     descripcionInput = document.getElementById('descripcion')
-    console.log(typeof esNuevo)
     if(!esNuevo) {
         console.log(esNuevo)
         descripcionInput.value = solicitudes[solicitudSeleccionada].Descripción
@@ -56,5 +55,5 @@ function init(){
 }
 
 cancelarBtn.addEventListener('click', () => {
-    location.href = "principal.html"
+    location.href = "mis_solicitudes.html"
 })

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de usuarios</title>
+    <link rel="stylesheet" href="cm_usuario.css">
+</head>
+
+<body>
+
+    <div class="topnav" id="myTopnav">
+        <img src="../imagenes/logo_unahur.png" height="45">
+        <a href="../login/index.html" class="active" id= "cerrar-sesion">Salir</a>
+        <a href="../mis_solicitudes/mis_solicitudes.html">Mis Solicitudes</a>
+        <a href="../usuarios/usuarios.html">Usuarios</a>
+        <!--<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>--->
+    </div>
+    <h2>Creacion/Modificacion de usuario</h2>
+    <div>
+        <br>
+        <input type="date" placeholder="Fecha de nacimiento" id="fecha-input">
+        <br>
+       <!-- <input type="url" placeholder="Avatar" id="avatar-input">--->
+        <br>
+        <input type="text" placeholder="Nombre" id="nombre-input">
+        <br>
+        <input type="password" placeholder="Contraseña" id= "contraseña-input">
+    </div>
+    <br>
+    <button type="button" name="guardar" id="button">Guardar</button>
+    <button type="button" name="button" id="boton-cancelar">Cancelar</button>
+    <br>
+    <script src="cm_usuario.js"></script>
+</body>
+
+</html>

@@ -160,5 +160,5 @@ eliminarBtn.addEventListener('click', () => {
 })
 
 cerrarSession.addEventListener('click', () => {
-    document.location.href = "index.html"
+    document.location.href = "../login/index.html"
 })
