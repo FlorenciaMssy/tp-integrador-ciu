@@ -1,5 +1,6 @@
 var boton = document.getElementById('botonIngresar')
 var error = document.getElementById('error')
+var crearUsuarioBtn = document.getElementById('crear-usuario')
 
 boton.addEventListener('click', function (event) {
 
@@ -55,3 +56,7 @@ function validacionContraseña(contraseña){
     return !caracterIncorrecto && tieneLetra && tieneNumero
 
 }
+
+crearUsuarioBtn.addEventListener('click', ()=> {
+    document.location.href = "../usuarios/cm_usuario.html"
+})

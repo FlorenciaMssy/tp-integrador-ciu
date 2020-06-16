@@ -69,7 +69,7 @@ function init(){
 }
 
 cancelarBtn.addEventListener('click', () => {
-    location.href = "mis_solicitudes.html"
+    location.href = "usuarios.html"
 })
 
 

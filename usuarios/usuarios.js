@@ -12,7 +12,7 @@ var usuarios = [{
     "Seleccionar": "",
     "Activo": ""
 },
-{"Avatar": "",
+{   "Avatar": "",
     "Fecha_de_nacimiento": "1990-03-03",
     "Nombre": "papa",
     "Contraseña": "pepe123",
