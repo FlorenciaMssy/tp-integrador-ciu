@@ -7,14 +7,16 @@ var esNuevo
 var fechaInput
 var nombreInput
 var contraseñaInput
-var solicitudSeleccionada 
-var solicitudes 
+var solicitudSeleccionada
+var solicitudes
 var cancelarBtn = document.getElementById('boton-cancelar')
+var error = document.getElementById('error')
+var nombre = document.getElementById('nombre-input')
 
 
-function nuevoUsuario(fechaNacimiento, nombre , contraseña) {
+function nuevoUsuario(fechaNacimiento, nombre, contraseña) {
     /*var misSolicitudes = []*/
-    
+
     var nuevosDatos = {
         Avatar: "",
         Fecha_de_nacimiento: fechaNacimiento,
@@ -30,9 +32,9 @@ function nuevoUsuario(fechaNacimiento, nombre , contraseña) {
 
     localStorage.setItem('usuarios', JSON.stringify(usuariosViejos));
 }
-
 var botonGuardar = document.getElementById("button")
 botonGuardar.addEventListener('click', () => {
+    
     if(!esNuevo){
         editarUsuario(fechaInput.value, nombreInput.value, contraseñaInput.value)
     } else {
@@ -41,35 +43,20 @@ botonGuardar.addEventListener('click', () => {
 
     location.href = "usuarios.html"
 })
-function editarUsuario(fechaNacimiento, nombre , contraseña) {
+
+function editarUsuario(fechaNacimiento, nombre, contraseña) {
 
     usuarios[usuarioSeleccionado].Fecha_de_nacimiento = fechaNacimiento,
-    usuarios[usuarioSeleccionado].Nombre = nombre,
-    usuarios[usuarioSeleccionado].Contraseña = contraseña,
-    localStorage.setItem('usuarios', JSON.stringify(usuarios))
+        usuarios[usuarioSeleccionado].Nombre = nombre,
+        usuarios[usuarioSeleccionado].Contraseña = contraseña,
+        localStorage.setItem('usuarios', JSON.stringify(usuarios))
 }
 
 document.addEventListener('DOMContentLoaded', init());
 
-function init(){
-    usuarios = JSON.parse(localStorage.getItem('usuarios'))
-    usuarioSeleccionado = JSON.parse(localStorage.getItem("modificarUsuario"))
-    console.log(usuarioSeleccionado)
-    esNuevo = JSON.parse(localStorage.getItem('esNuevo'))
-    fechaInput = document.getElementById('fecha-input')
-    nombreInput = document.getElementById('nombre-input')
-    contraseñaInput  = document.getElementById('contraseña-input')
-    if(!esNuevo) {
-        fechaInput.value = usuarios[usuarioSeleccionado].Fecha_de_nacimiento
-        nombreInput.value= usuarios[usuarioSeleccionado].Nombre
-        contraseñaInput.value = usuarios[usuarioSeleccionado].Contraseña
-    }
-}
-
 cancelarBtn.addEventListener('click', () => {
     location.href = "usuarios.html"
 })
-
 
 window.onclick = function (event) {
     if (!event.target.matches('.dropbtn')) {
@@ -81,14 +68,31 @@ window.onclick = function (event) {
                 openDropdown.classList.remove('show');
             }
         }
-    } 
+    }
 }
 
 function myFunction() {
     var x = document.getElementById("myTopnav");
     if (x.className === "topnav") {
-      x.className += " responsive";
+        x.className += " responsive";
     } else {
-      x.className = "topnav";
+        x.className = "topnav";
     }
-  }
+}
+
+document.addEventListener('DOMContentLoaded', init());
+
+function init() {
+    usuarios = JSON.parse(localStorage.getItem('usuarios'))
+    usuarioSeleccionado = JSON.parse(localStorage.getItem("modificarUsuario"))
+    console.log(usuarioSeleccionado)
+    esNuevo = JSON.parse(localStorage.getItem('esNuevo'))
+    fechaInput = document.getElementById('fecha-input')
+    nombreInput = document.getElementById('nombre-input')
+    contraseñaInput = document.getElementById('contraseña-input')
+    if (!esNuevo) {
+        fechaInput.value = usuarios[usuarioSeleccionado].Fecha_de_nacimiento
+        nombreInput.value = usuarios[usuarioSeleccionado].Nombre
+        contraseñaInput.value = usuarios[usuarioSeleccionado].Contraseña
+    }
+}
