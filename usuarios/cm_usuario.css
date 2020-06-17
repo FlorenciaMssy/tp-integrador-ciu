@@ -1,7 +1,25 @@
+
+.boots-input{
+  width: 50% !important;
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: 0%;
+}
+
+.btn-cancel{
+  background-color: red;
+}
+
 body {
     background-image: url("../imagenes/fondoppal.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-position: center;
     background-size: cover;
     background-size: 100% 100%;
 }

@@ -6,6 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de usuarios</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/ext/bootstrap/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="cm_usuario.css">
 </head>
 
@@ -13,31 +15,67 @@
 
     <div class="topnav" id="myTopnav">
         <img src="../imagenes/logo_unahur.png" height="45">
-        <a href="../login/index.html" class="active" id= "cerrar-sesion">Salir</a>
+        <a href="../login/index.html" class="active" id="cerrar-sesion">Salir</a>
         <a href="../mis_solicitudes/mis_solicitudes.html">Mis Solicitudes</a>
         <a href="../usuarios/usuarios.html">Usuarios</a>
         <!--<a href="javascript:void(0);" class="icon" onclick="myFunction()">
           <i class="fa fa-bars"></i>
         </a>--->
     </div>
+    <br>
     <h2>Creacion o modificacion de usuario</h2>
-    <div>
+
+    <br>
+    <br>
+
+    <div class="container">
+        <form action="/action_page.php">
+            <div class="boots-input form-group">
+                <label for="email">Fecha de nacimiento:</label>
+                <input type="date" class="form-control" id="fecha-input" placeholder="Ingresa tu fecha de nacimiento"
+                    name="email">
+            </div>
+
+            <div class="boots-input form-group">
+                <label for="email">Nombre del alumno:</label>
+                <input type="text" class="form-control" id="nombre-input" placeholder="Ingresa tu nombre" name="email">
+            </div>
+            <div class="boots-input form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control" id="contraseña-input" placeholder="Enter password"
+                    name="pswd">
+            </div>
+            <button type="button" class="btn-save btn btn-primary" id="button">Guardar</button>
+            <button type="button" class="btn btn-danger" id="boton-cancelar">Cancelar</button>
+        </form>
+    </div>
+
+
+    <!-- <div>
         <br>
         <h4>Fecha de nacimiento:
-        <input type="date" placeholder="Fecha de nacimiento" id="fecha-input"></h4>
-        <!-- <input type="url" placeholder="Avatar" id="avatar-input">--->
+            <input type="date" placeholder="Fecha de nacimiento" id="fecha-input"></h4>
+        <input type="url" placeholder="Avatar" id="avatar-input">-
         <h4>Nombre:
-        <input type="text" placeholder="Nombre" id="nombre-input">
+            <input type="text" placeholder="Nombre" id="nombre-input">
         </h4>
         <h4>Contraseña:
-        <input type="password" placeholder="Contraseña" id= "contraseña-input">
+            <input type="password" placeholder="Contraseña" id="contraseña-input">
         </h4>
     </div>
+
     <br>
     <button type="button" name="guardar" id="button">Guardar</button>
     <button type="button" name="button" id="boton-cancelar">Cancelar</button>
-    <br>
+    <br> -->
+
+
     <script src="cm_usuario.js"></script>
+    <script src="/ext/bootstrap/js/jquery.js"></script>
+    <script src="/ext/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
 
 </html>

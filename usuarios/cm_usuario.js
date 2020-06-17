@@ -24,8 +24,6 @@ function nuevoUsuario(fechaNacimiento, nombre , contraseña) {
         Activo: ""
     };
 
-
-
     var usuariosViejos = JSON.parse(localStorage.getItem('usuarios'));
 
     usuariosViejos.push(nuevosDatos);
