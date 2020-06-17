@@ -12,19 +12,21 @@ var solicitudes
 var cancelarBtn = document.getElementById('boton-cancelar')
 var error = document.getElementById('error')
 var nombre = document.getElementById('nombre-input')
+var avatar = "https://avatars.dicebear.com/api/identicon/" + nombre.value + ".svg"
+var avatarImg = new Image(avatar)
 
-
-function nuevoUsuario(fechaNacimiento, nombre, contraseña) {
+function nuevoUsuario(fechaNacimiento, nombre, contraseña, avatar) {
     /*var misSolicitudes = []*/
 
     var nuevosDatos = {
-        Avatar: "",
+        Avatar: avatar,
         Fecha_de_nacimiento: fechaNacimiento,
         Nombre: nombre,
         Contraseña: contraseña,
         Seleccionar: "",
         Activo: ""
     };
+    
 
     var usuariosViejos = JSON.parse(localStorage.getItem('usuarios'));
 
@@ -34,17 +36,19 @@ function nuevoUsuario(fechaNacimiento, nombre, contraseña) {
 }
 var botonGuardar = document.getElementById("button")
 botonGuardar.addEventListener('click', () => {
-    
+
     if(!esNuevo){
         editarUsuario(fechaInput.value, nombreInput.value, contraseñaInput.value)
     } else {
-        nuevoUsuario(fechaInput.value, nombreInput.value, contraseñaInput.value)
+        nuevoUsuario(fechaInput.value, nombreInput.value, contraseñaInput.value, avatarImg)
+        console.log('blabla')
+        console.log(typeof avatarImg)
     }
 
     location.href = "usuarios.html"
 })
 
-function editarUsuario(fechaNacimiento, nombre, contraseña) {
+function editarUsuario(fechaNacimiento, nombre, contraseña, ) {
 
     usuarios[usuarioSeleccionado].Fecha_de_nacimiento = fechaNacimiento,
         usuarios[usuarioSeleccionado].Nombre = nombre,
