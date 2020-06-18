@@ -124,8 +124,6 @@ function init() {
     usuarioSeleccionado = JSON.parse(localStorage.getItem("modificarUsuario"))
     esNuevo = JSON.parse(localStorage.getItem('esNuevo'))
 
-    console.log(typeof esNuevo)
-
     if (!esNuevo) {
         document.getElementById('fecha-input').value = usuarios[usuarioSeleccionado].Fecha_de_nacimiento
         document.getElementById('nombre-input').value = usuarios[usuarioSeleccionado].Usuario

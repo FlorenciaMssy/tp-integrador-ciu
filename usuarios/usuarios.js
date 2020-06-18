@@ -29,8 +29,6 @@ var usuarios = [{
 }] 
 
 
-var usu = JSON.parse(localStorage.getItem('usuarios'));
-document.addEventListener('DOMContentLoaded', crearTabla());
 
 
 function generarIndice(lista) {
@@ -42,20 +40,13 @@ function generarIndice(lista) {
         return usuario
     })
 }
-/*
-function generar(){
-    if (usu.length <= 1 && banderaLogin==0){
-        for(var i = 0; i <= usuarios.length-1; i++){
-            usu.push(usuarios[i])
-        }
-    }
-        banderaLogin += 1
-    
-}*/
+
+var usu = JSON.parse(localStorage.getItem('usuarios')) || [];
+usu = usu.concat(usuarios)
+document.addEventListener('DOMContentLoaded', crearTabla());
 
 function crearTabla() {
-    console.log(usu)
-    /*generar();*/
+    debugger
     var table = document.getElementById("mostrarDato");
     while (table.firstChild) {
         table.removeChild(table.firstChild)
@@ -99,7 +90,6 @@ function crearTabla() {
                     checkbox.id = [i];
                     checkbox.value = usu[i][col[j]];
                     tabCell.appendChild(checkbox);
-                   /* existeTabla = true;*/
                 }
                 if( j == 5 ) {
                     if(usu[i][col[j]]){
@@ -113,7 +103,6 @@ function crearTabla() {
             }            
         }
     }
-    localStorage.setItem("usuarios", JSON.stringify(usu))
 }
 
 
@@ -123,7 +112,6 @@ function usuarioSeleccionado() {
             var posicion = i
         }
     }
-    console.log(seleccion)
     return posicion
 }
 

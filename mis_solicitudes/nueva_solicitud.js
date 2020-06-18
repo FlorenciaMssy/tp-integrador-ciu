@@ -47,11 +47,8 @@ function init(){
     esNuevo = JSON.parse(localStorage.getItem('esNuevo'))
     descripcionInput = document.getElementById('descripcion')
     if(!esNuevo) {
-        console.log(esNuevo)
         descripcionInput.value = solicitudes[solicitudSeleccionada].Descripción
-    } else {
-        console.log("entro")
-    }
+    } 
 }
 
 cancelarBtn.addEventListener('click', () => {
