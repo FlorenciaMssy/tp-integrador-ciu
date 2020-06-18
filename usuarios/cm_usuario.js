@@ -6,28 +6,23 @@ exit.addEventListener('click', () => {
     document.location.href = "../login/index.html"
 })
 
-var esNuevo
-var fechaInput
-var nombreInput
-var contraseñaInput
 var solicitudSeleccionada
 var solicitudes
 var cancelarBtn = document.getElementById('boton-cancelar')
 var error = document.getElementById('error')
 var nombre = document.getElementById('nombre-input')
-var avatar = "https://avatars.dicebear.com/api/identicon/" + nombre.value + ".svg"
-var avatarImg = new Image(avatar)
 
-function nuevoUsuario(fechaNacimiento, nombre, contraseña, avatar) {
+function nuevoUsuario(fechaNacimiento, nombre, contraseña, email) {
     /*var misSolicitudes = []*/
 
     var nuevosDatos = {
-        Avatar: avatar,
+        Avatar: md5(email),
         Fecha_de_nacimiento: fechaNacimiento,
-        Nombre: nombre,
-        Contraseña: contraseña,
+        Usuario: nombre,
+        Email: email,
         Seleccionar: "",
-        Activo: ""
+        Activo: "",
+        Contraseña: contraseña
     };
 
 
@@ -41,29 +36,26 @@ function nuevoUsuario(fechaNacimiento, nombre, contraseña, avatar) {
 
 var botonGuardar = document.getElementById("button")
 botonGuardar.addEventListener('click', () => {
-    usuario = document.getElementById("nombre-input").value;
-    contraseña = document.getElementById("contraseña-input").value
-    var nombreIngresado;
-    var contraseñaIngresada;
+    var usuario = document.getElementById("nombre-input").value;
+    var contraseña = document.getElementById("contraseña-input").value
+    var fecha = document.getElementById('fecha-input').value
+    var email = document.getElementById('email-input').value
 
 
-
-    if (!esNuevo) {
-        nombreIngresado = nombreInput.value;
-        contraseñaIngresada = contraseñaInput.value;
-        editarUsuario(fechaInput.value, nombreInput.value, contraseñaInput.value)
-
-    } else {
-        nuevoUsuario(fechaInput.value, nombreInput.value, contraseñaInput.value, avatarImg)
-
-    }
     if (validacionUsuario(usuario) && validacionContraseña(contraseña)) {
-        location.href = "usuarios.html";
-
-    } else {
+        if (!esNuevo) {
+            editarUsuario(fecha, usuario, contraseña, email)
+    
+        } else {
+            nuevoUsuario(fecha, usuario, contraseña, email)
+    
+        }
+        location.href = "usuarios.html"; 
+    }else {
         document.getElementById("error").style.display = "block"
         error.innerHTML = "El usuario debe tener 8 numeros y la contrasena al menos 3 letras y 3 numeros"
     }
+
 })
 
 function validacionUsuario(usuario) {
@@ -94,18 +86,19 @@ function validacionContraseña(contraseña) {
             }
         }
     }
-
     return !caracterIncorrecto && tieneLetra && tieneNumero
-
 }
 
 
-function editarUsuario(fechaNacimiento, nombre, contraseña, ) {
-
+function editarUsuario(fechaNacimiento, nombre, contraseña, email) {
+    if(email !== usuarios[usuarioSeleccionado].Email) {
+        usuarios[usuarioSeleccionado].Avatar = md5(email)
+    }
     usuarios[usuarioSeleccionado].Fecha_de_nacimiento = fechaNacimiento,
-        usuarios[usuarioSeleccionado].Nombre = nombre,
-        usuarios[usuarioSeleccionado].Contraseña = contraseña,
-        localStorage.setItem('usuarios', JSON.stringify(usuarios))
+    usuarios[usuarioSeleccionado].Usuario = nombre,
+    usuarios[usuarioSeleccionado].Email = email,
+    usuarios[usuarioSeleccionado].Contraseña = contraseña,
+    localStorage.setItem('usuarios', JSON.stringify(usuarios))
 }
 
 document.addEventListener('DOMContentLoaded', init());
@@ -141,14 +134,12 @@ document.addEventListener('DOMContentLoaded', init());
 function init() {
     usuarios = JSON.parse(localStorage.getItem('usuarios'))
     usuarioSeleccionado = JSON.parse(localStorage.getItem("modificarUsuario"))
-    console.log(usuarioSeleccionado)
     esNuevo = JSON.parse(localStorage.getItem('esNuevo'))
-    fechaInput = document.getElementById('fecha-input')
-    nombreInput = document.getElementById('nombre-input')
-    contraseñaInput = document.getElementById('contraseña-input')
+
     if (!esNuevo) {
-        fechaInput.value = usuarios[usuarioSeleccionado].Fecha_de_nacimiento
-        nombreInput.value = usuarios[usuarioSeleccionado].Nombre
-        contraseñaInput.value = usuarios[usuarioSeleccionado].Contraseña
+        document.getElementById('fecha-input').value = usuarios[usuarioSeleccionado].Fecha_de_nacimiento
+        document.getElementById('nombre-input').value = usuarios[usuarioSeleccionado].Usuario
+        document.getElementById('contraseña-input').value = usuarios[usuarioSeleccionado].Contraseña
+        document.getElementById('email-input').value = usuarios[usuarioSeleccionado].Email
     }
 }

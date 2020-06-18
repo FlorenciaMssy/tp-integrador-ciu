@@ -4,20 +4,28 @@ var modificarBtn = document.getElementById("modificar-btn");
 var nuevoBtn = document.getElementById("nuevo-btn");
 var cerrarSession = document.getElementById("cerrar-sesion");
 
+
 var usuarios = [{
-    "Avatar": "",
+    "Avatar": md5("acrodri991@gmail.com"),
     "Fecha_de_nacimiento": "1991-03-12",
-    "Nombre": "Pepe",
-    "Contraseña": "pepe123",
+    "Usuario": "Pepe",
+    "Email" : "acrodri991@gmail.com",
     "Seleccionar": "",
-    "Activo": ""
+    "Activo": false,
+    "Contraseña": "pepe123",
+    /*"Solicitudes": [{    "Fecha_Solicitud": "30/03/2020",
+    "Descripción": "Pedido de notebook",
+    "Estado": "Abierta",
+    "Seleccionar": 0}]*/
+
 },
-{   "Avatar": "",
+{   "Avatar": md5("juanmadaria92@gmail.com"),
     "Fecha_de_nacimiento": "1990-03-03",
-    "Nombre": "papa",
-    "Contraseña": "pepe123",
+    "Usuario": "papa",
+    "Email" : "juanmadaria92@gmail.com",
     "Seleccionar": "",
-    "Activo": ""
+    "Activo": true,
+    "Contraseña": "pepe123"
 }] 
 
 var usu = JSON.parse(localStorage.getItem('usuarios'));
@@ -50,38 +58,42 @@ function crearTabla() {
             }
         }
     }
-
     var tr = table.insertRow(0); //table row
 
     for (var i = 0; i < col.length; i++) { //table header
-        var th = document.createElement("th");
-        if ( i !== 3  ) {
+        if(col[i]!== 'Contraseña') {
+            var th = document.createElement("th");
             th.innerText = col[i];
             tr.appendChild(th);
         }
     }
-
+    
     //add json data to the table as row
     for (var i = 0; i < usu.length; i++) {
         tr = table.insertRow(-1);
         for (var j = 0; j < col.length; j++) {
             var tabCell = tr.insertCell(-1);
-            if (col[j] !== "Seleccionar" & j!== 3) {
-                tabCell.innerText =  usu[i][col[j]];
-            }
-
-
-            if (j == 3) {
-
-                var checkbox = document.createElement("input"); //Added for checkbox
-                checkbox.type = "radio"; //Added for checkbox
-                checkbox.className = "check-usuario"
-                checkbox.name = "buttonCh";
-                checkbox.id = [i];
-                checkbox.value = usu[i][col[j]];
-                tabCell.appendChild(checkbox);
-                existeTabla = true;
-            }
+            if(col[j] !== 'Contraseña' ) {
+                if (col[j] !== "Seleccionar") {
+                    tabCell.innerText =  usu[i][col[j]];
+                }
+                if(j==0){
+                    var imagen = "<img src=\""+"https://www.gravatar.com/avatar/"+usu[i][col[j]]+"\"/>"
+    
+                    tabCell.innerHTML = imagen;
+                }
+                if (j == 4) {
+    
+                    var checkbox = document.createElement("input"); //Added for checkbox
+                    checkbox.type = "radio"; //Added for checkbox
+                    checkbox.className = "check-usuario"
+                    checkbox.name = "buttonCh";
+                    checkbox.id = [i];
+                    checkbox.value = usu[i][col[j]];
+                    tabCell.appendChild(checkbox);
+                    existeTabla = true;
+                }
+            }            
         }
     }
     localStorage.setItem("usuarios", JSON.stringify(usu))
@@ -89,25 +101,23 @@ function crearTabla() {
 
 
 function usuarioSeleccionado() {
-    var posicion;
     for (var i = 0; i < checkboxSelUsuario.length; i++) {
         if (checkboxSelUsuario[i].checked) {
-            posicion = i
+            var posicion = i
         }
     }
     return posicion
 }
 
 function estaSeleccionado() {
-    var seleccion;
     for (var i = 0; i < checkboxSelUsuario.length; i++) {
         if (checkboxSelUsuario[i].checked) {
-            seleccion = checkboxSelUsuario[i].checked
+            var seleccion = checkboxSelUsuario[i].checked
         }
-
     }
     return seleccion
 }
+
 modificarBtn.addEventListener('click', () =>{
     if (estaSeleccionado()) {
         localStorage.setItem('modificarUsuario', JSON.stringify(usuarioSeleccionado()));
@@ -128,6 +138,7 @@ nuevoBtn.addEventListener('click', ()=>{
 
 eliminarBtn.addEventListener('click', () => {
     if (estaSeleccionado()) {
+        debugger;
         usu.splice(estaSeleccionado(), 1);
         localStorage.setItem('usuarios', JSON.stringify(usu));
         crearTabla();

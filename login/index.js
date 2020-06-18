@@ -57,5 +57,6 @@ function validacionContraseña(contraseña){
 }
 
 crearUsuarioBtn.addEventListener('click', ()=> {
+    localStorage.setItem('esNuevo', true)
     document.location.href = "../usuarios/cm_usuario.html"
 })

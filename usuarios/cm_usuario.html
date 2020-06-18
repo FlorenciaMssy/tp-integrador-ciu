@@ -25,6 +25,7 @@
     <br>
     <div class="container">
         <form>
+            <input type="hidden">
             <div class="boots-input form-group">
                 <label for="fecha">Fecha de nacimiento:</label>
                 <input type="date" class="form-control" id="fecha-input" placeholder="Ingresa tu fecha de nacimiento"
@@ -35,7 +36,11 @@
                 <input type="text" class="form-control" id="nombre-input" placeholder="Ingresa tu usuario" name="nombre">
             </div>
             <div class="boots-input form-group">
-                <label for="pwd">Contraseña:</label>
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email-input" placeholder="Ingresa tu email" name="email">
+            </div>
+            <div class="boots-input form-group">
+                <label for="pswd">Contraseña:</label>
                 <input type="password" class="form-control" id="contraseña-input" placeholder="Ingresa tu contraseña"
                 name="pswd">
             </div>
@@ -44,6 +49,7 @@
         </form>
         <div id="error"></div>
     </div>
+    <script src="../Md5/md5.min.js"></script>
     <script src="cm_usuario.js"></script>
     <script src="/ext/bootstrap/js/jquery.js"></script>
     <script src="/ext/bootstrap/js/bootstrap.min.js"></script>
