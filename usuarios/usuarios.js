@@ -3,7 +3,7 @@ var eliminarBtn = document.getElementById("eliminar-btn");
 var modificarBtn = document.getElementById("modificar-btn");
 var nuevoBtn = document.getElementById("nuevo-btn");
 var cerrarSession = document.getElementById("cerrar-sesion");
-
+var banderaLogin = 0
 
 var usuarios = [{
     "Avatar": md5("acrodri991@gmail.com"),
@@ -13,7 +13,7 @@ var usuarios = [{
     "Seleccionar": "",
     "Activo": false,
     "Contraseña": "pepe123",
-    /*"Solicitudes": [{    "Fecha_Solicitud": "30/03/2020",
+    /*"Solicitudes": [{ /*   "Fecha_Solicitud": "30/03/2020",
     "Descripción": "Pedido de notebook",
     "Estado": "Abierta",
     "Seleccionar": 0}]*/
@@ -28,6 +28,7 @@ var usuarios = [{
     "Contraseña": "pepe123"
 }] 
 
+
 var usu = JSON.parse(localStorage.getItem('usuarios'));
 document.addEventListener('DOMContentLoaded', crearTabla());
 
@@ -41,16 +42,26 @@ function generarIndice(lista) {
         return usuario
     })
 }
+/*
+function generar(){
+    if (usu.length <= 1 && banderaLogin==0){
+        for(var i = 0; i <= usuarios.length-1; i++){
+            usu.push(usuarios[i])
+        }
+    }
+        banderaLogin += 1
+    
+}*/
 
 function crearTabla() {
+    console.log(usu)
+    /*generar();*/
     var table = document.getElementById("mostrarDato");
     while (table.firstChild) {
         table.removeChild(table.firstChild)
     }
     usu = generarIndice(usu);
-    //sol = JSON.parse(localStorage.getItem('solicitudes'));
     var col = [];
-
     for (var i = 0; i < usu.length; i++) {
         for (var key in usu[i]) {
             if (col.indexOf(key) === -1) {
@@ -67,8 +78,7 @@ function crearTabla() {
             tr.appendChild(th);
         }
     }
-    
-    //add json data to the table as row
+
     for (var i = 0; i < usu.length; i++) {
         tr = table.insertRow(-1);
         for (var j = 0; j < col.length; j++) {
@@ -79,11 +89,9 @@ function crearTabla() {
                 }
                 if(j==0){
                     var imagen = "<img src=\""+"https://www.gravatar.com/avatar/"+usu[i][col[j]]+"\"/>"
-    
                     tabCell.innerHTML = imagen;
                 }
                 if (j == 4) {
-    
                     var checkbox = document.createElement("input"); //Added for checkbox
                     checkbox.type = "radio"; //Added for checkbox
                     checkbox.className = "check-usuario"
@@ -91,7 +99,16 @@ function crearTabla() {
                     checkbox.id = [i];
                     checkbox.value = usu[i][col[j]];
                     tabCell.appendChild(checkbox);
-                    existeTabla = true;
+                   /* existeTabla = true;*/
+                }
+                if( j == 5 ) {
+                    if(usu[i][col[j]]){
+                        var punto = "<img src=\""+"../imagenes/greenPoint.PNG"+"\"id='point'/>"
+                        tabCell.innerHTML = punto;
+                    } else {
+                        var punto = "<img src=\""+"../imagenes/redPoint.png"+"\"id='point'/>"
+                        tabCell.innerHTML = punto;
+                    }
                 }
             }            
         }
@@ -106,6 +123,7 @@ function usuarioSeleccionado() {
             var posicion = i
         }
     }
+    console.log(seleccion)
     return posicion
 }
 
@@ -134,14 +152,12 @@ nuevoBtn.addEventListener('click', ()=>{
     document.location.href = "cm_usuario.html"
 })
 
-
-
 eliminarBtn.addEventListener('click', () => {
     if (estaSeleccionado()) {
-        debugger;
-        usu.splice(estaSeleccionado(), 1);
+        usu.splice(usu[usuarioSeleccionado], 1);
         localStorage.setItem('usuarios', JSON.stringify(usu));
         crearTabla();
+        //banderaLogin +=1
     } else {
         document.getElementById("error").style.display = "block"
         error.innerHTML = "Debe seleccionar un usuario para eliminar."
