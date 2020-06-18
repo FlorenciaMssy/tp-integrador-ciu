@@ -5,24 +5,24 @@ var nuevoBtn = document.getElementById("nuevo-btn");
 var cerrarSession = document.getElementById("cerrar-sesion");
 
 var solicitudes = [{
-    "Fecha_Solicitud": "30/03/2020",
-    "Descripción": "Pedido de notebook",
-    "Estado": "Abierta",
-    "Seleccionar": 0
-},
-{
-    "Fecha_Solicitud": "03/04/2020",
-    "Descripción": "Cambio de horario",
-    "Estado": "En progreso",
-    "Seleccionar": 0
-},
-{
-    "Fecha_Solicitud": "12/05/2020",
-    "Descripción": "Pedido de una bicicleta para llegar a la universidad",
-    "Estado": "Cerrada",
-    "Seleccionar": 0
-}
-] 
+        "Fecha_Solicitud": "30/03/2020",
+        "Descripción": "Pedido de notebook",
+        "Estado": "Abierta",
+        "Seleccionar": 0
+    },
+    {
+        "Fecha_Solicitud": "03/04/2020",
+        "Descripción": "Cambio de horario",
+        "Estado": "En progreso",
+        "Seleccionar": 0
+    },
+    {
+        "Fecha_Solicitud": "12/05/2020",
+        "Descripción": "Pedido de una bicicleta para llegar a la universidad",
+        "Estado": "Cerrada",
+        "Seleccionar": 0
+    }
+]
 
 
 var sol = JSON.parse(localStorage.getItem('solicitudes'));
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', crearTabla());
 
 function generarIndice(lista) {
     console.log(lista, typeof lista)
-    if(!lista) {
+    if (!lista) {
         lista = solicitudes
     }
     return lista.map((solicitud, index) => {
@@ -108,7 +108,7 @@ function myFunction() {
 }
 
 
-window.onclick = function (event) {
+window.onclick = function(event) {
     if (!event.target.matches('.dropbtn')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
         var i;
@@ -118,8 +118,9 @@ window.onclick = function (event) {
                 openDropdown.classList.remove('show');
             }
         }
-    } 
+    }
 }
+
 function estaSeleccionado() {
     var seleccion;
     for (var i = 0; i < checkboxSeleccionado.length; i++) {
@@ -130,12 +131,12 @@ function estaSeleccionado() {
     return seleccion
 }
 
-nuevoBtn.addEventListener('click', ()=>{
+nuevoBtn.addEventListener('click', () => {
     localStorage.setItem('esNuevo', true)
     document.location.href = "nueva_solicitud.html"
 })
 
-modificarBtn.addEventListener('click', () =>{
+modificarBtn.addEventListener('click', () => {
     if (estaSeleccionado()) {
         localStorage.setItem('modificarElemento', JSON.stringify(estaSeleccionado()));
         localStorage.setItem('esNuevo', false)
