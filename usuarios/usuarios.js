@@ -55,8 +55,10 @@ function crearTabla() {
 
     for (var i = 0; i < col.length; i++) { //table header
         var th = document.createElement("th");
-        th.innerText = col[i];
-        tr.appendChild(th);
+        if ( i !== 3  ) {
+            th.innerText = col[i];
+            tr.appendChild(th);
+        }
     }
 
     //add json data to the table as row
@@ -64,11 +66,12 @@ function crearTabla() {
         tr = table.insertRow(-1);
         for (var j = 0; j < col.length; j++) {
             var tabCell = tr.insertCell(-1);
-            if (col[j] !== "Seleccionar") {
+            if (col[j] !== "Seleccionar" & j!== 3) {
                 tabCell.innerText =  usu[i][col[j]];
             }
 
-            if (j == 4) {
+
+            if (j == 3) {
 
                 var checkbox = document.createElement("input"); //Added for checkbox
                 checkbox.type = "radio"; //Added for checkbox

@@ -3,7 +3,6 @@ var error = document.getElementById('error')
 var crearUsuarioBtn = document.getElementById('crear-usuario')
 
 boton.addEventListener('click', function (event) {
-
         usuario = document.getElementById("usuario").value;
         contraseña = document.getElementById("contraseña").value
     
