@@ -117,7 +117,7 @@ function myFunction() {
 
 var exit = document.getElementById("cerrar-sesion");
 exit.addEventListener('click', () => {
-    document.location.href = "../login/index.html"
+    document.location.href = "../index.html"
 })
 
 
