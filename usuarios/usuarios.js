@@ -46,7 +46,6 @@ usu = usu.concat(usuarios)
 document.addEventListener('DOMContentLoaded', crearTabla());
 
 function crearTabla() {
-    debugger
     var table = document.getElementById("mostrarDato");
     while (table.firstChild) {
         table.removeChild(table.firstChild)
