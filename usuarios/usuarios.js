@@ -111,6 +111,7 @@ function usuarioSeleccionado() {
             var posicion = i
         }
     }
+    console.log();
     return posicion
 }
 
@@ -119,6 +120,7 @@ function estaSeleccionado() {
         if (checkboxSelUsuario[i].checked) {
             var seleccion = checkboxSelUsuario[i].checked
         }
+
     }
     return seleccion
 }

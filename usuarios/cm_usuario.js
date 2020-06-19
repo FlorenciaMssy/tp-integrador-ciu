@@ -1,4 +1,4 @@
-var boton = document.getElementById('nombre-input')
+// var boton = document.getElementById('nombre-input')
 var botonGuardar = document.getElementById("button")
 var error = document.getElementById('error')
 var solicitudSeleccionada
@@ -6,6 +6,10 @@ var solicitudes
 var cancelarBtn = document.getElementById('boton-cancelar')
 var error = document.getElementById('error')
 var nombre = document.getElementById('nombre-input')
+var fecha = document.getElementById('fecha-input');
+var psw =  document.getElementById('contrasenia-input');
+var mail = document.getElementById('email-input');
+
 var esNuevo = true
 
 function nuevoUsuario(fechaNacimiento, nombre, contraseña, email) {
@@ -120,15 +124,18 @@ exit.addEventListener('click', () => {
 document.addEventListener('DOMContentLoaded', init());
 
 function init() {
+    
     usuarios = JSON.parse(localStorage.getItem('usuarios'))
     usuarioSeleccionado = JSON.parse(localStorage.getItem("modificarUsuario"))
+    console.log(usuarios);
     esNuevo = JSON.parse(localStorage.getItem('esNuevo'))
 
     if (!esNuevo) {
-        document.getElementById('fecha-input').value = usuarios[usuarioSeleccionado].Fecha_de_nacimiento
-        document.getElementById('nombre-input').value = usuarios[usuarioSeleccionado].Usuario
-        document.getElementById('contrasenia-input').value = usuarios[usuarioSeleccionado].Contraseña
-        document.getElementById('email-input').value = usuarios[usuarioSeleccionado].Email
+        console.log(usuarioSeleccionado);
+        fecha.value = usuarios[usuarioSeleccionado].Fecha_de_nacimiento
+        nombre.value = usuarios[usuarioSeleccionado].Usuario
+        psw.value = usuarios[usuarioSeleccionado].Contraseña
+        mail.value = usuarios[usuarioSeleccionado].Email
     }
 }
 

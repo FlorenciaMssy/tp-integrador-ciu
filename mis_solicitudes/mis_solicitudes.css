@@ -29,6 +29,7 @@ table {
     /* width: 180px; */
     /* table-layout: auto; */
     display: inline-flex;
+    width: auto !important;
 }
 
 th,
