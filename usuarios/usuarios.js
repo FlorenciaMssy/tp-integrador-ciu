@@ -156,8 +156,9 @@ nuevoBtn.addEventListener('click', ()=>{
 
 eliminarBtn.addEventListener('click', () => {
     if (estaSeleccionado()) {
-        usu.splice(usu[usuarioSeleccionado], 1);
+        usu.splice(usuarioSeleccionado(), 1);
         localStorage.setItem('usuarios', JSON.stringify(usu));
+        console.log(usuarioSeleccionado())
         crearTabla();
     } else {
         document.getElementById("error").style.display = "block"
