@@ -8,7 +8,7 @@ var banderaLogin = 0
 var usuarios = [{
     "Avatar": md5("acrodri991@gmail.com"),
     "Fecha_de_nacimiento": "1991-03-12",
-    "Usuario": "Pepe",
+    "Usuario": "13455768",
     "Email" : "acrodri991@gmail.com",
     "Seleccionar": "",
     "Activo": false,
@@ -21,12 +21,21 @@ var usuarios = [{
 },
 {   "Avatar": md5("juanmadaria92@gmail.com"),
     "Fecha_de_nacimiento": "1990-03-03",
-    "Usuario": "papa",
+    "Usuario": "34567890",
     "Email" : "juanmadaria92@gmail.com",
     "Seleccionar": "",
     "Activo": true,
     "Contraseña": "pepe123"
-}] 
+},
+{   "Avatar": md5("florenciamssy@gmail.com"),
+       "Fecha_de_nacimiento": "1990-10-15",
+       "Usuario": "12345678",
+       "Email" : "florenciamssy@gmail.com",
+       "Seleccionar": "",
+       "Activo": true,
+       "Contraseña": "pepe123"
+   }
+]
 
 
 
@@ -42,7 +51,12 @@ function generarIndice(lista) {
 }
 
 var usu = JSON.parse(localStorage.getItem('usuarios')) || [];
-usu = usu.concat(usuarios)
+//usu = usu.concat(usuarios)
+if (!usu.length) {
+  localStorage.setItem('usuarios', JSON.stringify(usuarios));
+  usu = JSON.parse(localStorage.getItem('usuarios'))
+}
+
 document.addEventListener('DOMContentLoaded', crearTabla());
 
 function crearTabla() {
@@ -111,7 +125,6 @@ function usuarioSeleccionado() {
             var posicion = i
         }
     }
-    console.log();
     return posicion
 }
 
@@ -146,7 +159,6 @@ eliminarBtn.addEventListener('click', () => {
         usu.splice(usu[usuarioSeleccionado], 1);
         localStorage.setItem('usuarios', JSON.stringify(usu));
         crearTabla();
-        //banderaLogin +=1
     } else {
         document.getElementById("error").style.display = "block"
         error.innerHTML = "Debe seleccionar un usuario para eliminar."

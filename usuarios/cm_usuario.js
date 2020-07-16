@@ -127,11 +127,11 @@ function init() {
     
     usuarios = JSON.parse(localStorage.getItem('usuarios'))
     usuarioSeleccionado = JSON.parse(localStorage.getItem("modificarUsuario"))
-    console.log(usuarios);
     esNuevo = JSON.parse(localStorage.getItem('esNuevo'))
 
     if (!esNuevo) {
-        console.log(usuarioSeleccionado);
+        console.log(usuarioSeleccionado)
+        console.log(usuarios[usuarioSeleccionado])
         fecha.value = usuarios[usuarioSeleccionado].Fecha_de_nacimiento
         nombre.value = usuarios[usuarioSeleccionado].Usuario
         psw.value = usuarios[usuarioSeleccionado].Contraseña
